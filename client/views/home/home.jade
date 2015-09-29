@@ -1,0 +1,59 @@
+template(name='Home')
+  if currentUser
+    .row
+      .col.m6
+        #home
+          #ratingheader
+            h4(class='nycColorFont') {{applicant.f_name}} {{applicant.l_name}}
+            table
+              thead
+                th(style='width:25%') ID: {{applicant._id}}
+                th(style='width:25%') Gpa: {{applicant.curdegree}}
+                th(style='width:25%') PreGpa: {{applicant.predegree}}
+                th(style='width:25%') Votes: {{numberOfVotes}}
+            p(style="padding-left: 10px; padding-right: 10px")
+              h5 Motivation: {{applicant.motivation}}
+            table
+              thead
+                th(style='width:25%') GPA
+                th(style='width:25%') WORK EXPERIENCE
+                th(style='width:25%') EXTRACURRICULAR
+                th(style='width:25%') OVERALL
+              tbody
+                th(style='width:25%')
+                  input(type="text" id='gpa' placeholder="1-1")
+                th(style='width:25%') 
+                  input(type="text" id='workexperience' placeholder="1-1")
+                th(style='width:25%') 
+                  input(type="text" id='extracurricular' placeholder="1-1")
+                th(style='width:25%') 
+                  input(type="text" id='overall' placeholder="1-1")
+            input(type="checkbox" class="filled-in" id="canSpeakGermanFluently")
+            label(for="canSpeakGermanFluently") Can the applicant speak German fluently?
+          #ratingremarks
+            h5 Remarks:
+            
+            textarea(id="remarks" class="materialize-textarea", style="height:100%")
+            label(for="remarks") 
+          #ratingfooter
+            table
+              thead
+                th(style='width:20%')
+                  a(id="submit" name="{{applicant._id}}" class="waves-effect waves-light btn" style="width:100%") Submit
+                th(style='width:20%') 
+                  a(id="trash" name="{{applicant._id}}" class="waves-effect waves-light btn" style="width:100%; background-color: red !important") Trash
+                th(style='width:20%') 
+                  a(id="whutrash" name="{{applicant._id}}" class="waves-effect waves-light btn" style="width:100%") WHU Trash
+                th(style='width:20%')
+                  if isUserFlagged
+                    a(id="unflag" name="{{applicant._id}}" class="waves-effect waves-light btn" style="width:100%; background-color: darkgreen !important") Unflag
+                  else
+                    a(id="flag" name="{{applicant._id}}" class="waves-effect waves-light btn" style="width:100%; background-color: orange !important") Flag
+                th(style='width:20%') 
+                  a(id="skip" name="{{applicant._id}}" class="waves-effect waves-light btn" style="width:100%") Skip
+      .col.m6
+        object#pdf_content(width='800', height='auto', type='application/pdf', data='/pdf/{{applicant._id}}.pdf')
+          p Your browser is not able to print PDF Pages. Please download a PDF Plugin.
+  else
+    #home
+      h3 Log in

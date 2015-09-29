@@ -1,0 +1,50 @@
+template(name='Users')
+  #users
+    h3 Users
+
+    if users
+      h5 Create new user
+      h5 Please make sure that the new user already signed the privacy policy
+      
+      table
+        thead
+          tr
+            th Email
+            th Password
+            th Save
+        tbody
+            tr
+              td
+                input(type="text",id="new_user_email")
+              td
+                input(type="password",id="new_user_password")
+              td
+                a(class='waves-effect waves-light btn', id='createNewUser') Create
+
+      table
+        thead
+          tr
+            th ID
+            th Email
+            th Role
+            th Delete/Edit
+        tbody
+            tr
+              td
+                input(type="text",id="_id" disabled)
+              td
+                input(type="text",id="email" disabled)
+              td
+                input(type="text",id="role")
+              td
+                a(class='waves-effect waves-light btn', id='saveUser') Save
+          each users
+            tr
+              td
+                span(id="{{_id}}-_id") {{_id}}
+              td
+                span(id="{{_id}}-email") {{emailAddress}}
+              td
+                span(id="{{_id}}-role") {{profile.role}}
+              td
+                a(class='waves-effect waves-light btn editbtn', name='{{_id}}') Edit

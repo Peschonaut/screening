@@ -1,0 +1,19 @@
+template(name='Header')
+  header
+    nav
+      div.nav-wrapper.primaryColor
+
+        a(href='{{pathFor "home"}}')
+          img(src='/img/nyc.png' style='height: 75%; margin-top: 10px;')
+
+        ul.right
+          if currentUser
+            if currentUserIsAdmin
+              .nav-commands.center
+                a(href="{{pathFor 'home'}}", class="hvr-underline-from-left") Screening
+                a(href="{{pathFor 'flagged'}}", class="hvr-underline-from-left") View Flagged
+                a(href="{{pathFor 'users'}}", class="hvr-underline-from-left") User Management
+
+          else
+            li
+              a(class='waves-effect waves-light btn', id='login', href='{{pathFor "login"}}' style='margin-right:20px') Login

@@ -1,0 +1,28 @@
+template(name='Flagged')
+  #home
+    h3 Flagged users
+
+    if applicants
+      table
+        thead
+          tr
+            th ID
+            th First name
+            th Last name
+            th Flagged by
+            th Review
+        tbody
+        each applicants
+          tr
+            td
+              span(id="{{_id}}-_id") {{_id}}
+            td
+              span(id="{{_id}}-email") {{first}}
+            td
+              span(id="{{_id}}-role") {{last}}
+            td
+              span(id="{{_id}}-role") {{flaggedBy}}
+            td
+              a(id="submit" href="{{pathFor 'individual' _id}}" class="waves-effect waves-light btn") Review
+    else
+      h4 We have no flagged CVs right now
