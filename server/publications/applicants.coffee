@@ -12,13 +12,9 @@ Meteor.publish 'OneApplicant', ->
   if !applicant
     applicant =
       _id: "we are done"
-  #console.log 'applicant published', applicant
-  #Set the applicant as blocked until x+10m
   timestamp = +new Date() + 60*1000 #in ms
   Applicants.update { _id: applicant._id }, $set: 'blockedUntil': timestamp
-  #build cursor
   @added('applicants', applicant._id, applicant)
-  #return
   @ready()
 
 Meteor.publish 'AllFlaggedApplicants', ->
@@ -26,4 +22,4 @@ Meteor.publish 'AllFlaggedApplicants', ->
 
 Meteor.publish 'OneSpecificApplicant', (_id) ->
   check _id, String
-  Applicants.find(_id)
+  Applicants.find(parseInt(_id))
