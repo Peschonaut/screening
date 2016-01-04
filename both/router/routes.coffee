@@ -29,6 +29,14 @@ Router.map ->
 
   @route 'logs', path: '/logs'
 
+  @route 'statistics',
+  path: '/statistics',
+  waitOn: -> Meteor.subscribe 'AllApplicants'
+
+  @route 'analytics',
+  path: '/analytics',
+  waitOn: -> Meteor.subscribe 'AllApplicants'
+
 # Static routes
   @route 'imprint', path: '/imprint'
   @route 'privacy', path: '/privacy'
