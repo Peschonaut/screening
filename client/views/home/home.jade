@@ -5,6 +5,7 @@ template(name='Home')
         #home
           #ratingheader
             h4(class='nycColorFont') {{applicant.f_name}} {{applicant.l_name}}
+            h5 Hard Facts
             table
               thead
                 th(style='width:25%') ID: {{applicant._id}}
@@ -15,21 +16,42 @@ template(name='Home')
               h5 Motivation: {{applicant.motivation}}
             table
               thead
-                th(style='width:25%') GPA
+                th(style='width:50%') GPA
+                th(style='width:50%') GRADESYSTEM
+              tbody
+                th(style='width:50%')
+                  input(type="text" id='gpa' placeholder="")
+                th(style='width:50%') 
+                  select(id='gradeSystem' style="margin-bottom:15px")
+                    option GPA (4-0)
+                    option GPA (5-0)
+                    option Percentile (non UK)
+                    option Letter Grade
+                    option German
+                    option French
+                    option UK
+                    option unknown
+            input(type="checkbox" class="filled-in" id="isFromWHU")
+            label(for="isFromWHU") Is the applicant from WHU?
+            br
+            input(type="checkbox" class="filled-in" id="isAnExtraordinaryPerson")
+            label(for="isAnExtraordinaryPerson") Is the applicant an extraordinary person?
+            br
+            input(type="checkbox" class="filled-in" id="canSpeakGermanFluently")
+            label(for="canSpeakGermanFluently") Can the applicant speak German fluently?
+            h5 Soft Facts
+            table
+              thead
                 th(style='width:25%') WORK EXPERIENCE
                 th(style='width:25%') EXTRACURRICULAR
                 th(style='width:25%') OVERALL
               tbody
-                th(style='width:25%')
-                  input(type="text" id='gpa' placeholder="1-1")
                 th(style='width:25%') 
-                  input(type="text" id='workexperience' placeholder="1-1")
+                  input(type="text" id='workexperience' placeholder="1 - 8")
                 th(style='width:25%') 
-                  input(type="text" id='extracurricular' placeholder="1-1")
+                  input(type="text" id='extracurricular' placeholder="1 - 5")
                 th(style='width:25%') 
-                  input(type="text" id='overall' placeholder="1-1")
-            input(type="checkbox" class="filled-in" id="canSpeakGermanFluently")
-            label(for="canSpeakGermanFluently") Can the applicant speak German fluently?
+                  input(type="text" id='overall' placeholder="-2 - 2")
           #ratingremarks
             h5 Remarks:
             
@@ -42,8 +64,6 @@ template(name='Home')
                   a(id="submit" name="{{applicant._id}}" class="waves-effect waves-light btn" style="width:100%") Submit
                 th(style='width:20%') 
                   a(id="trash" name="{{applicant._id}}" class="waves-effect waves-light btn" style="width:100%; background-color: red !important") Trash
-                th(style='width:20%') 
-                  a(id="whutrash" name="{{applicant._id}}" class="waves-effect waves-light btn" style="width:100%") WHU Trash
                 th(style='width:20%')
                   if isUserFlagged
                     a(id="unflag" name="{{applicant._id}}" class="waves-effect waves-light btn" style="width:100%; background-color: darkgreen !important") Unflag
