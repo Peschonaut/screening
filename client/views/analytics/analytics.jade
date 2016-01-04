@@ -1,0 +1,26 @@
+template(name='Analytics')
+  #users
+    h3 Analytics
+
+    if users
+      table
+        thead
+          tr
+            th User
+            th Email
+            th # Screenings
+            th Averages
+            th Kindness
+        tbody
+          each users
+            tr
+              td
+                span(id="{{_id}}-_id") {{_id}}
+              td
+                span(id="{{_id}}-email") {{emailAddress}}
+              td
+                span(id="{{_id}}-role") {{numberOfScreenings users}}
+              td
+                span(id="{{_id}}-role") {{averages users}}
+              td
+                span(id="{{_id}}-role") {{averages users}}
