@@ -10,6 +10,7 @@ template(name='Flagged')
             th First name
             th Last name
             th Flagged by
+            th Flagged Reason
             th Review
         tbody
         each applicants
@@ -19,9 +20,11 @@ template(name='Flagged')
             td
               span(id="{{_id}}-email") {{first}}
             td
-              span(id="{{_id}}-role") {{last}}
+              span(id="{{_id}}-last") {{last}}
             td
-              span(id="{{_id}}-role") {{flaggedBy}}
+              span(id="{{_id}}-flaggedBy") {{flaggedBy}}
+            td
+              span(id="{{_id}}-reason") {{flaggedReason}}
             td
               a(id="submit" href="{{pathFor 'individual' _id}}" class="waves-effect waves-light btn") Review
     else
