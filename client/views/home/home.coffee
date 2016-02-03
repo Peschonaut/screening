@@ -76,7 +76,7 @@ Template.Home.rendered = ->
   h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
 
   document.getElementById("pdf_content")?.width = w/2
-  document.getElementById("pdf_content")?.height = h - 135
+  document.getElementById("pdf_content")?.height = h - 80
   #resize remarks box
   ratingheaderHeight = document.getElementById("ratingheader").clientHeight
   ratingheaderFooter = document.getElementById("ratingfooter").clientHeight
