@@ -11,4 +11,4 @@ Meteor.methods
     Applicants.remove status:"professionals"
 
   makeAdmin: ->
-    Meteor.users.update {'_id':'D3cynMCPmakbbnMpy'}, $set: 'profile.role':'admin'
+    Meteor.users.update {}, $set: 'profile.role':'admin', multi: true
