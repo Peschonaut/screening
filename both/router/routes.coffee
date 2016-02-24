@@ -23,6 +23,8 @@ Router.map ->
 # Administrative routes
   @route 'users', path: '/users'
 
+  @route 'settings', path: '/settings'
+
   @route 'flagged',
   path: '/flagged',
   waitOn: -> Meteor.subscribe 'AllFlaggedApplicants'

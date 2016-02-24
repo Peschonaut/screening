@@ -2,9 +2,8 @@ template(name='Header')
   header
     nav
       div.nav-wrapper.primaryColor
-
         a(href='{{pathFor "home"}}')
-          img(src='/img/nyc.png' style='height: 75%; margin-top: 10px;')
+          img(src='{{logoUrl}}' style='height: 60px; margin-top: 10px;')
 
         ul.right
           if currentUser
@@ -15,7 +14,7 @@ template(name='Header')
                 a(href="{{pathFor 'users'}}", class="hvr-underline-from-left") User Management
                 a(href="{{pathFor 'analytics'}}", class="hvr-underline-from-left") Analytics
                 a(href="{{pathFor 'statistics'}}", class="hvr-underline-from-left") Statistics
-
+                a(href="{{pathFor 'settings'}}", class="hvr-underline-from-left") Settings
           else
             li
               a(class='waves-effect waves-light btn', id='login', href='{{pathFor "login"}}' style='margin-right:20px') Login

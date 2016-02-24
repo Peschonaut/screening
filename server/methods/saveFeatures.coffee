@@ -19,17 +19,17 @@ Meteor.methods
     trashObject =
       markedAsTrashBy: Meteor.userId()
       comment: comment
-    Applicants.update { _id: parseInt(_id) }, $push: 'results': trashObject
-    Applicants.update { _id: parseInt(_id) }, $push: 'results': trashObject
-    Applicants.update { _id: parseInt(_id) }, $push: 'results': trashObject
+    resultCount = Settings.findOne()?.resultCount
+    for i in [0..resultCount-1]
+      Applicants.update { _id: parseInt(_id) }, $push: 'results': trashObject
 
   markApplicantAsFlagged: (_id, reason) ->
     check _id, String
     check reason, String
     #console.log 'markApplicantAsFlagged', _id
-    Applicants.update { _id: parseInt(_id) }, $set: 'flagged': true
-    Applicants.update { _id: parseInt(_id) }, $set: 'flaggedReason': reason
-    Applicants.update { _id: parseInt(_id) }, $set: 'flaggedBy': Meteor.userId()
+    resultCount = Settings.findOne()?.resultCount
+    for i in [0..resultCount-1]
+      Applicants.update { _id: parseInt(_id) }, $set: 'flagged': true
 
   markApplicantAsUnflagged: (_id) ->
     check _id, String

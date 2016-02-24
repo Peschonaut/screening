@@ -3,12 +3,19 @@ Meteor.publish 'AllApplicants', ->
   Applicants.find()
 
 Meteor.publish 'OneApplicant', ->
-  #Select an Applicant
+  #Select an ApplicantresultCount
+  resultCount = Settings.findOne()?.resultCount
   applicant = Applicants.findOne({$and: [{'results': {$exists: false}}, {$or: [{blockedUntil: {$exists: false}}, {blockedUntil: {$lte: +new Date()}}]}, $or: [{flagged : {$exists: false}},{flagged: false}]]})
   if !applicant
-    applicant = Applicants.findOne({$and: [{'results.1': {$exists: false}}, {$or: [{blockedUntil: {$exists: false}}, {blockedUntil: {$lte: +new Date()}}]}, $or: [{flagged : {$exists: false}},{flagged: false}]]})
-  if !applicant
-    applicant = Applicants.findOne({$and: [{'results.2': {$exists: false}}, {$or: [{blockedUntil: {$exists: false}}, {blockedUntil: {$lte: +new Date()}}]}, $or: [{flagged : {$exists: false}},{flagged: false}]]})
+    for i in [1..resultCount-1]
+      queryIndexString = "results."+String(i)
+      qry = {}
+      qry[queryIndexString] = {$exists: false}
+      console.log 'qry', qry
+      if !applicant
+        applicant = Applicants.findOne({$and: [qry, {$or: [{blockedUntil: {$exists: false}}, {blockedUntil: {$lte: +new Date()}}]}, $or: [{flagged : {$exists: false}},{flagged: false}]]})
+      if applicant
+        break;
   if !applicant
     applicant =
       _id: "we are done"

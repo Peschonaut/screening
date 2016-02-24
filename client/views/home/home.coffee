@@ -10,32 +10,48 @@ Template.Home.helpers
   isUserFlagged: ->
     return Applicants.findOne()?.flagged == true
 
+  settings: (key, subkey) ->
+    settings = Settings.findOne()
+    object = _.find settings.fields, (elem) ->
+      elem._id == key
+    object?[subkey]
+
+  humanReadableBounds: (key) ->
+    console.log 'key', key
+    settings = Settings.findOne()
+    object = _.find settings.fields, (elem) ->
+      elem._id == key
+    humanReadableBounds = String(object.min)
+    humanReadableBounds += ' - '
+    humanReadableBounds += String(object.max)
+
 Template.Home.events
   'click #submit': ->
+    settings = Settings.findOne()
+
     ratingObject =
       gpa: document.getElementById("gpa").value
-      workexperience: document.getElementById("workexperience").value
-      extracurricular: document.getElementById("extracurricular").value
-      overall: document.getElementById("overall").value
-      speaksGermanFluently: document.getElementById("canSpeakGermanFluently").checked
-      isExtraordinary: document.getElementById("isAnExtraordinaryPerson").checked
-      isFromWHU: document.getElementById("isFromWHU").checked
+      softFact1: document.getElementById("softFact1").value
+      softFact2: document.getElementById("softFact2").value
+      softFact3: document.getElementById("softFact3").value
+      checkbox1: document.getElementById("checkbox1").checked
+      checkbox2: document.getElementById("checkbox2").checked
+      checkbox3: document.getElementById("checkbox3").checked
       gpaSystem: document.getElementById("gradeSystem").value
       ratedBy: Meteor.userId()
 
     inputIsOk = true
+
     if parseInt(document.getElementById("gpa").value) > 5 || parseInt(document.getElementById("gpa").value) < 1 || document.getElementById("gpa").value == ""
       alert "Invalid gpa"
       inputIsOk = false
-    if parseInt(document.getElementById("workexperience").value) > 8 || parseInt(document.getElementById("workexperience").value) < 1 || document.getElementById("workexperience").value == ""
-      alert "Invalid workexperience"
-      inputIsOk = false
-    if parseInt(document.getElementById("extracurricular").value) > 5 || parseInt(document.getElementById("extracurricular").value) < 1 || document.getElementById("extracurricular").value == ""
-      alert "Invalid extracurricular"
-      inputIsOk = false
-    if parseInt(document.getElementById("overall").value) > 2 || parseInt(document.getElementById("overall").value) < -2 || document.getElementById("overall").value == ""
-      alert "Invalid overall"
-      inputIsOk = false
+
+    softFacts = ['softFact1', 'softFact2', 'softFact3']
+    _.each softFacts, (softFact) ->
+      if parseInt(document.getElementById(softFact)?.value) > settings[softFact]?.max || parseInt(document.getElementById(softFact)?.value) < settings[softFact]?.min || document.getElementById(softFact)?.value == ""
+        alert "Invalid "+ softFact
+        inputIsOk = false
+
     if inputIsOk
       #console.log 'ratingObject', ratingObject
       Meteor.call("conductOneRatingWithRatingObject", String(applicant()._id), ratingObject)

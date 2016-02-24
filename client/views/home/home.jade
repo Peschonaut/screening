@@ -5,7 +5,6 @@ template(name='Home')
         #home
           #ratingheader
             h4(class='nycColorFont') {{applicant.first}} {{applicant.last}}
-            h5 Hard Facts
             table
               thead
                 th(style='width:25%') ID: {{applicant._id}}
@@ -21,7 +20,7 @@ template(name='Home')
               tbody
                 th(style='width:50%')
                   input(type="text" id='gpa' placeholder="")
-                th(style='width:50%') 
+                th(style='width:50%')
                   select(id='gradeSystem' style="margin-bottom:15px")
                     option GPA (4-0)
                     option GPA (5-0)
@@ -31,45 +30,43 @@ template(name='Home')
                     option French
                     option UK
                     option unknown
-            input(type="checkbox" class="filled-in" id="isFromWHU")
-            label(for="isFromWHU") Is the applicant from WHU?
+            input(type="checkbox" class="filled-in" id="checkbox1")
+            label(for="checkbox1") {{settings 'checkbox1' 'label'}}
             br
-            input(type="checkbox" class="filled-in" id="isAnExtraordinaryPerson")
-            label(for="isAnExtraordinaryPerson") Is the applicant an extraordinary person?
+            input(type="checkbox" class="filled-in" id="checkbox2")
+            label(for="checkbox2") {{settings 'checkbox2' 'label'}}
             br
-            input(type="checkbox" class="filled-in" id="canSpeakGermanFluently")
-            label(for="canSpeakGermanFluently") Can the applicant speak German fluently?
-            h5 Soft Facts
+            input(type="checkbox" class="filled-in" id="checkbox3")
+            label(for="checkbox3") {{settings 'checkbox3' 'label'}}
             table
               thead
-                th(style='width:25%') WORK EXPERIENCE
-                th(style='width:25%') EXTRACURRICULAR
-                th(style='width:25%') OVERALL
+                th(style='width:25%') {{settings 'softFact1' 'label'}}
+                th(style='width:25%') {{settings 'softFact2' 'label'}}
+                th(style='width:25%') {{settings 'softFact3' 'label'}}
               tbody
-                th(style='width:25%') 
-                  input(type="text" id='workexperience' placeholder="1 - 8")
-                th(style='width:25%') 
-                  input(type="text" id='extracurricular' placeholder="1 - 5")
-                th(style='width:25%') 
-                  input(type="text" id='overall' placeholder="-2 - 2")
+                th(style='width:25%')
+                  input(type="text" id='softFact1' placeholder="{{humanReadableBounds 'softFact1'}}")
+                th(style='width:25%')
+                  input(type="text" id='softFact2' placeholder="{{humanReadableBounds 'softFact2'}}")
+                th(style='width:25%')
+                  input(type="text" id='softFact3' placeholder="{{humanReadableBounds 'softFact3'}}")
           #ratingremarks
             h5 Remarks:
-            
-            textarea(id="remarks" class="materialize-textarea", style="height:100%")
-            label(for="remarks") 
+            textarea(id="remarks" style="height:100%")
+            label(for="remarks")
           #ratingfooter
             table
               thead
                 th(style='width:20%')
                   a(id="submit" name="{{applicant._id}}" class="waves-effect waves-light btn" style="width:100%") Submit
-                th(style='width:20%') 
+                th(style='width:20%')
                   a(id="trash" name="{{applicant._id}}" class="waves-effect waves-light btn" style="width:100%; background-color: red !important") Trash
                 th(style='width:20%')
                   if isUserFlagged
                     a(id="unflag" name="{{applicant._id}}" class="waves-effect waves-light btn" style="width:100%; background-color: darkgreen !important") Unflag
                   else
                     a(id="flag" name="{{applicant._id}}" class="waves-effect waves-light btn" style="width:100%; background-color: orange !important") Flag
-                th(style='width:20%') 
+                th(style='width:20%')
                   a(id="skip" name="{{applicant._id}}" class="waves-effect waves-light btn" style="width:100%") Skip
       .col.m6
         object#pdf_content(width='800', height='auto', type='application/pdf', data='/pdf/{{applicant._id}}.pdf')

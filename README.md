@@ -26,13 +26,14 @@ The \_id of the document should correspond to the filename of the CV. The file f
 ## Example JSON - Applicant
 ```
 {
-    "_id" : "0123456789",
+    "_id" : NumberInt(40111111),
     "first" : "Daniel",
     "last" : "Pesch",
     "salutation" : "Mr.",
     "predegree" : "4.0",
     "curdegree" : "4.0"
     // You can add more features if you want
+    // The tool will create more subdocuments right here
 }
 ```
 The tool will then write the results of the screening into the applicant's document.

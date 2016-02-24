@@ -17,11 +17,13 @@ useraccounts:materialize
 gildaspk:autoform-materialize
 fortawesome:fontawesome
 ixdi:material-design-iconic-font
+dburles:collection-helpers
 fermuch:pickadate
 reactive-dict
 email
 pascoual:pdfjs
 standard-minifiers
+chriswessels:glyphicons-halflings
 meteor-base
 mobile-experience
 mongo

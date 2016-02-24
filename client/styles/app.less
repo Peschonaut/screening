@@ -25,6 +25,22 @@
   color: @nycColor;
 }
 
+nav ul a:hover {
+    background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.list-group-item.autoform-array-item .autoform-remove-item-wrap {
+    display: none;
+}
+
+label {
+  [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+      position: relative;
+      left:0;
+      visibility:visible;
+  }
+}
+
 p {
   border: 1px solid;
 }
