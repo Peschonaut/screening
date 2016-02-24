@@ -9,7 +9,7 @@ Meteor.methods
   updateRemarksForApplicant: (_id, remarks) ->
     check _id, String
     check remarks, String
-    console.log 'updateRemarksForApplicant', _id, remarks
+    # console.log 'updateRemarksForApplicant', _id, remarks
     Applicants.update { _id: parseInt(_id) }, $set: 'results_remarks': remarks
 
   markApplicantAsTrash: (_id, comment) ->

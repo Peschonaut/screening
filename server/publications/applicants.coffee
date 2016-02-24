@@ -11,7 +11,7 @@ Meteor.publish 'OneApplicant', ->
       queryIndexString = "results."+String(i)
       qry = {}
       qry[queryIndexString] = {$exists: false}
-      console.log 'qry', qry
+      # console.log 'qry', qry
       if !applicant
         applicant = Applicants.findOne({$and: [qry, {$or: [{blockedUntil: {$exists: false}}, {blockedUntil: {$lte: +new Date()}}]}, $or: [{flagged : {$exists: false}},{flagged: false}]]})
       if applicant

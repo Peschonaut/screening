@@ -17,7 +17,7 @@ Template.Home.helpers
     object?[subkey]
 
   humanReadableBounds: (key) ->
-    console.log 'key', key
+    # console.log 'key', key
     settings = Settings.findOne()
     object = _.find settings.fields, (elem) ->
       elem._id == key

@@ -2,8 +2,9 @@
 Template.Statistics.helpers
   "remainingScreens": ->
     allApplicants = Applicants.find()?.fetch()
-    neededTotalScreens = allApplicants?.length * 3
-    console.log 'neededTotalScreens', neededTotalScreens
+    resultCount = Settings.findOne()?.resultCount
+    neededTotalScreens = allApplicants?.length * resultCount
+    # console.log 'neededTotalScreens', neededTotalScreens
     totalScreenings = 0
     for applicant in allApplicants
       applicantDoc = Applicants.findOne(applicant._id)
@@ -11,10 +12,10 @@ Template.Statistics.helpers
       if !screenings?
         screenings = 0
       if applicantDoc?.flagged == true
-        screenings = 3
+        screenings = resultCount
       if screenings > 3
-        screenings = 3
+        screenings = resultCount
       totalScreenings += screenings
 
-    console.log 'totalScreenings', totalScreenings
+    # console.log 'totalScreenings', totalScreenings
     neededTotalScreens-totalScreenings
