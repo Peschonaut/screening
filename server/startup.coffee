@@ -1,13 +1,18 @@
 Meteor.startup ->
-  if process.env.SETTINGS_RESET?
+  if process.env.SETTINGS_RESET == 'true'
     Settings.remove {}
   settingsExist = Settings.findOne()?
   if !settingsExist
+    # Typecasting to boolean inline might kill the app
+    allowScreening = false
+    if process.env.ALLOW_SCREENING == 'true'
+      allowScreening = true
+
     settings =
       '_id': Random.id()
       'logoUrl': process.env.LOGO_URL or '/img/nyc.png'
-      'allowScreening': process.env.ALLOW_SCREENING or false
-      'resultCount': process.env.RESULT_COUNT or 3
+      'allowScreening': allowScreening
+      'resultCount': parseInt(process.env.RESULT_COUNT) or 3
       'fields': [
           {
             'label': process.env.LABELCB1 or 'Is the applicant from WHU?'
@@ -24,20 +29,20 @@ Meteor.startup ->
           {
             'label': process.env.LABELSF1 or 'WORK EXPERIENCE'
             '_id': 'softFact1'
-            'max': process.env.MAXSF1 or 5
-            'min': process.env.MINSF1 or 1
+            'max': parseInt(process.env.MAXSF1) or 5
+            'min': parseInt(process.env.MINSF1) or 1
           }
           {
             'label': process.env.LABELSF2 or 'EXTRACURRICULAR'
             '_id': 'softFact2'
-            'max': process.env.MAXSF2 or 5
-            'min': process.env.MINSF2 or 1
+            'max': parseInt(process.env.MAXSF2) or 5
+            'min': parseInt(process.env.MINSF2) or 1
           }
           {
             'label': process.env.LABELSF3 or 'INERNATL'
             '_id': 'softFact3'
-            'max': process.env.MAXSF3 or 5
-            'min': process.env.MINSF3 or 1
+            'max': parseInt(process.env.MAXSF3) or 5
+            'min': parseInt(process.env.MINSF3) or 1
           }
         ]
     Settings.insert settings
