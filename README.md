@@ -23,6 +23,11 @@ Open a command prompt, navigate to the folder and type 'meteor' to start the app
 To use this tool you have to add the CVs of the applicants into the public/pdf folder and create corresponding documents in the database.
 The \_id of the document should correspond to the filename of the CV. The file format should be pdf.
 
+# Settings
+All settings are set in one single document of the 'Settings' collection.
+You can find all possible keys in the mup.json or the server/startup.coffee.
+Changes can be applied by changing the document in the database itself or by setting the environment variables that are loaded (you can do so very easily by utilizing the mup configuration).
+
 ## Example JSON - Applicant
 ```
 {
