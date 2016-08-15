@@ -30,21 +30,21 @@ Template.Home.events
     settings = Settings.findOne()
 
     ratingObject =
-      gpa: document.getElementById("gpa").value
+      # gpa: document.getElementById("gpa").value
       softFact1: document.getElementById("softFact1").value
       softFact2: document.getElementById("softFact2").value
       softFact3: document.getElementById("softFact3").value
       checkbox1: document.getElementById("checkbox1").checked
       checkbox2: document.getElementById("checkbox2").checked
       checkbox3: document.getElementById("checkbox3").checked
-      gpaSystem: document.getElementById("gradeSystem").value
+      # gpaSystem: document.getElementById("gradeSystem").value
       ratedBy: Meteor.userId()
 
     inputIsOk = true
 
-    if parseInt(document.getElementById("gpa").value) > 5 || parseInt(document.getElementById("gpa").value) < 1 || document.getElementById("gpa").value == ""
-      alert "Invalid gpa"
-      inputIsOk = false
+    # if parseInt(document.getElementById("gpa").value) > 5 || parseInt(document.getElementById("gpa").value) < 1 || document.getElementById("gpa").value == ""
+    #   alert "Invalid gpa"
+    #   inputIsOk = false
 
     softFacts = ['softFact1', 'softFact2', 'softFact3']
     _.each softFacts, (softFact) ->
@@ -86,7 +86,7 @@ Template.Home.events
 
 Template.Home.rendered = ->
   #console.log 'rendered'
-  document.getElementById("gpa").value = applicant().curdegree
+  document.getElementById("gpa")?.value = applicant().curdegree
   #resize pdf canvas
   w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
   h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
@@ -94,7 +94,7 @@ Template.Home.rendered = ->
   document.getElementById("pdf_content")?.width = w/2
   document.getElementById("pdf_content")?.height = h - 80
   #resize remarks box
-  ratingheaderHeight = document.getElementById("ratingheader").clientHeight
-  ratingheaderFooter = document.getElementById("ratingfooter").clientHeight
+  ratingheaderHeight = document.getElementById("ratingheader")?.clientHeight
+  ratingheaderFooter = document.getElementById("ratingfooter")?.clientHeight
   optimalRemarksHeight = h - 225 - ratingheaderHeight - ratingheaderFooter
   #document.getElementById("ratingremarks")?.height = optimalRemarksHeight

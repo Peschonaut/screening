@@ -8,28 +8,30 @@ template(name='Home')
             table
               thead
                 th(style='width:25%') ID: {{applicant._id}}
-                th(style='width:25%') Gpa: {{applicant.curdegree}}
-                th(style='width:25%') PreGpa: {{applicant.predegree}}
+                //- th(style='width:25%') Gpa: {{applicant.curdegree}}
+                //- th(style='width:25%') PreGpa: {{applicant.predegree}}
                 th(style='width:25%') Votes: {{numberOfVotes}}
             p(style="padding-left: 10px; padding-right: 10px")
-              h5 Motivation: {{applicant.motivation}}
-            table
-              thead
-                th(style='width:50%') GPA
-                th(style='width:50%') GRADESYSTEM
-              tbody
-                th(style='width:50%')
-                  input(type="text" id='gpa' placeholder="")
-                th(style='width:50%')
-                  select(id='gradeSystem' style="margin-bottom:15px")
-                    option GPA (4-0)
-                    option GPA (5-0)
-                    option Percentile (non UK)
-                    option Letter Grade
-                    option German
-                    option French
-                    option UK
-                    option unknown
+              h5 Origin: {{applicant.origin}}
+            p(style="padding-left: 10px; padding-right: 10px")
+              h5 Stipend Reason: {{applicant.reason}}
+            //- table
+            //-   thead
+            //-     th(style='width:50%') GPA
+            //-     th(style='width:50%') GRADESYSTEM
+            //-   tbody
+            //-     th(style='width:50%')
+            //-       input(type="text" id='gpa' placeholder="")
+            //-     th(style='width:50%')
+            //-       select(id='gradeSystem' style="margin-bottom:15px")
+            //-         option GPA (4-0)
+            //-         option GPA (5-0)
+            //-         option Percentile (non UK)
+            //-         option Letter Grade
+            //-         option German
+            //-         option French
+            //-         option UK
+            //-         option unknown
             input(type="checkbox" class="filled-in" id="checkbox1")
             label(for="checkbox1") {{settings 'checkbox1' 'label'}}
             br
@@ -69,7 +71,7 @@ template(name='Home')
                 th(style='width:20%')
                   a(id="skip" name="{{applicant._id}}" class="waves-effect waves-light btn" style="width:100%") Skip
       .col.m6
-        object#pdf_content(width='800', height='auto', type='application/pdf', data='/pdf/{{applicant._id}}.pdf')
+        object#pdf_content(width='800', height='auto', type='application/pdf', data='/pdf/{{applicant.cv}}')
           p Your browser is not able to print PDF Pages. Please download a PDF Plugin.
   else
     #home
