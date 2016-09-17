@@ -12,9 +12,13 @@ template(name='Home')
                 //- th(style='width:25%') PreGpa: {{applicant.predegree}}
                 th(style='width:25%') Votes: {{numberOfVotes}}
             p(style="padding-left: 10px; padding-right: 10px")
-              h5 Origin: {{applicant.origin}}
+              h5 Origin (if present): {{applicant.origin}}
             p(style="padding-left: 10px; padding-right: 10px")
-              h5 Stipend Reason: {{applicant.reason}}
+              h5 Stipend Reason (if present): {{applicant.reason}}
+            p(style="padding-left: 10px; padding-right: 10px")
+              h5 LinkedIn (if present): {{applicant.linkedin}}
+            p(style="padding-left: 10px; padding-right: 10px")
+              h5 CV File: <a href="/pdf/{{applicant.cv}}" target="_blank">Open in a new tab</a>
             //- table
             //-   thead
             //-     th(style='width:50%') GPA
