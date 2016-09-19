@@ -34,10 +34,13 @@ Template.Home.events
       softFact1: document.getElementById("softFact1").value
       softFact2: document.getElementById("softFact2").value
       softFact3: document.getElementById("softFact3").value
+      softFact4: document.getElementById("softFact4").value
       checkbox1: document.getElementById("checkbox1").checked
       checkbox2: document.getElementById("checkbox2").checked
       checkbox3: document.getElementById("checkbox3").checked
       # gpaSystem: document.getElementById("gradeSystem").value
+      remarks: document.getElementById("remarks").value
+      university: document.getElementById("university").value
       ratedBy: Meteor.userId()
 
     inputIsOk = true
@@ -46,7 +49,7 @@ Template.Home.events
     #   alert "Invalid gpa"
     #   inputIsOk = false
 
-    softFacts = ['softFact1', 'softFact2', 'softFact3']
+    softFacts = ['softFact1', 'softFact2', 'softFact3', 'softFact4']
     _.each softFacts, (softFact) ->
       if parseInt(document.getElementById(softFact)?.value) > settings[softFact]?.max || parseInt(document.getElementById(softFact)?.value) < settings[softFact]?.min || document.getElementById(softFact)?.value == ""
         alert "Invalid "+ softFact

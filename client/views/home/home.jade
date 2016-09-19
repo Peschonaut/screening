@@ -11,6 +11,7 @@ template(name='Home')
                 //- th(style='width:25%') Gpa: {{applicant.curdegree}}
                 //- th(style='width:25%') PreGpa: {{applicant.predegree}}
                 th(style='width:25%') Votes: {{numberOfVotes}}
+                th(style='width:25%') Role: {{applicant.role}}
             p(style="padding-left: 10px; padding-right: 10px")
               h5 Origin (if present): {{applicant.origin}}
             p(style="padding-left: 10px; padding-right: 10px")
@@ -19,6 +20,8 @@ template(name='Home')
               h5 LinkedIn (if present): {{applicant.linkedin}}
             p(style="padding-left: 10px; padding-right: 10px")
               h5 CV File: <a href="/pdf/{{applicant.cv}}" target="_blank">Open in a new tab</a>
+            p(style="padding-left: 10px; padding-right: 10px")
+              input(type="text" id='university' style="margin-top:15px;" placeholder="University")
             //- table
             //-   thead
             //-     th(style='width:50%') GPA
@@ -49,6 +52,7 @@ template(name='Home')
                 th(style='width:25%') {{settings 'softFact1' 'label'}}
                 th(style='width:25%') {{settings 'softFact2' 'label'}}
                 th(style='width:25%') {{settings 'softFact3' 'label'}}
+                th(style='width:25%') {{settings 'softFact4' 'label'}}
               tbody
                 th(style='width:25%')
                   input(type="text" id='softFact1' placeholder="{{humanReadableBounds 'softFact1'}}")
@@ -56,6 +60,8 @@ template(name='Home')
                   input(type="text" id='softFact2' placeholder="{{humanReadableBounds 'softFact2'}}")
                 th(style='width:25%')
                   input(type="text" id='softFact3' placeholder="{{humanReadableBounds 'softFact3'}}")
+                th(style='width:25%')
+                  input(type="text" id='softFact4' placeholder="{{humanReadableBounds 'softFact4'}}")
           #ratingremarks
             h5 Remarks:
             textarea(id="remarks" style="height:100%")
