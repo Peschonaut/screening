@@ -45,7 +45,8 @@ Meteor.publish 'OneApplicant', ->
         break;
   if !applicant
     applicant =
-      _id: "we are done"
+      _id: "we_are_done"
+      cv: "we_are_done"
   timestamp = +new Date() + 60*1000 #in ms
   applicant._id = parseInt(applicant._id)
   Applicants.update { _id: applicant._id }, $set: 'blockedUntil': timestamp
