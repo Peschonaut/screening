@@ -37,7 +37,10 @@ Template.Home.events
       checkbox1: document.getElementById("checkbox1").checked
       checkbox2: document.getElementById("checkbox2").checked
       checkbox3: document.getElementById("checkbox3").checked
-      # gpaSystem: document.getElementById("gradeSystem").value
+      # checkbox4: document.getElementById("checkbox4").checked
+      # checkbox4: document.getElementById("checkbox5").checked
+      gpa: document.getElementById("gpa").value
+      gpaSystem: document.getElementById("gradeSystem").value
       ratedBy: Meteor.userId()
 
     inputIsOk = true
