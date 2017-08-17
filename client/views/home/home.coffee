@@ -36,7 +36,7 @@ Template.Home.events
       softFact3: document.getElementById("softFact3").value
       checkbox1: document.getElementById("checkbox1").checked
       checkbox2: document.getElementById("checkbox2").checked
-      checkbox3: document.getElementById("checkbox3").checked
+      # checkbox3: document.getElementById("checkbox3").checked
       # checkbox4: document.getElementById("checkbox4").checked
       # checkbox4: document.getElementById("checkbox5").checked
       gpa: document.getElementById("gpa").value
@@ -45,9 +45,9 @@ Template.Home.events
 
     inputIsOk = true
 
-    # if parseInt(document.getElementById("gpa").value) > 5 || parseInt(document.getElementById("gpa").value) < 1 || document.getElementById("gpa").value == ""
-    #   alert "Invalid gpa"
-    #   inputIsOk = false
+    if document.getElementById("gpa").value == ""
+      alert "Empty gpa"
+      inputIsOk = false
 
     softFacts = ['softFact1', 'softFact2', 'softFact3']
     _.each softFacts, (softFact) ->

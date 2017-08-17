@@ -1,0 +1,23 @@
+{
+  "name": "screening",
+  "version": "1.0.0",
+  "description": "Screeningtool for screening applicants for student initiatives at WHU. #####The default website port is 3000(you can specify a --port XX option) #####The default mongodb port is 3001(or website+1)",
+  "main": "index.js",
+  "dependencies": {
+    "babel-runtime": "^6.26.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://Laymi@github.com/Laymi/screening.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Laymi/screening/issues"
+  },
+  "homepage": "https://github.com/Laymi/screening#readme"
+}

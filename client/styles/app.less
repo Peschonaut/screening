@@ -10,7 +10,8 @@
 
 @nycColor:           #4b96cd;
 
-@logoColor:          #00628B;
+//@logoColor:          #00628B;
+@logoColor:          #8bc521;
 @primaryColor:       white;
 @darkPrimaryColor:   #c9c9c9;
 @lightPrimaryColor:  #42A5F5;
@@ -23,10 +24,6 @@
 
 .nycColorFont {
   color: @nycColor;
-}
-
-nav ul a:hover {
-    background-color: rgba(0, 0, 0, 0) !important;
 }
 
 .list-group-item.autoform-array-item .autoform-remove-item-wrap {
@@ -90,13 +87,16 @@ h5 {
 }
 
 
+// These important flags are immensely ugly, but the materialize:materialize
+// package is a mess at this point and until we get a fix in METEOR > 1.5.2,
+// I will leave it at that
 input[type=text],
 input[type=email],
 input[type=password] {
   color: @textColor;
-  padding: 10px;
-  border: solid 1px @darkPrimaryColor;
-  transition: border 0.3s;
+  padding: 10px !important;
+  border: solid 1px @darkPrimaryColor !important;
+  transition: border 0.3s !important;;
 }
 nav ul li:hover, nav ul li.active {
   background-color: white;
@@ -104,13 +104,13 @@ nav ul li:hover, nav ul li.active {
 input[type="text"]:focus,
 input[type="text"].focus,
 input[type="password"].focus{
-  border: solid 1px #969696;
+  border: solid 1px #969696 !important;
   border-bottom-width: 1px !important;
 }
 input[type="text"]:disabled,
 input[type="text"].disabled,
 input[type="password"].disabled{
-  border: solid 1px #444444;
+  border: solid 1px #444444 !important;
   border-bottom-width: 1px !important;
 }
 
